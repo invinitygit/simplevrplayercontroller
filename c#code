@@ -1,0 +1,26 @@
+using UnityEngine;
+
+public class PlayerMovement : MonoBehaviour
+{
+    public float speed = 5f;
+    private Vector2 joystickInput;
+    private CharacterController characterController;
+
+    void Start()
+    {
+        characterController = GetComponent<CharacterController>();
+    }
+
+    void Update()
+    {
+        // Get joystick input
+        joystickInput.x = Input.GetAxis("Horizontal");
+        joystickInput.y = Input.GetAxis("Vertical");
+
+        // Move the player based on joystick input
+        Vector3 moveDirection = new Vector3(joystickInput.x, 0f, joystickInput.y);
+        moveDirection = transform.TransformDirection(moveDirection);
+        moveDirection *= speed;
+        characterController.Move(moveDirection * Time.deltaTime);
+    }
+}
