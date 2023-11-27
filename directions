@@ -1,0 +1,15 @@
+In this example, you'll need to set up your VR joysticks to map to Unity's input axes.
+
+1. Go to Edit -> Project Settings -> Input in the Unity Editor.
+  
+2. Under the "Axes" section, add two new axes named "Horizontal" and "Vertical".
+  
+3. Set the "Horizontal" axis to use the joystick axis for horizontal movement (e.g., Oculus Touch Thumbstick X-axis or HTC Vive Touchpad X-axis).
+  
+4. Set the "Vertical" axis to use the joystick axis for vertical movement (e.g., Oculus Touch Thumbstick Y-axis or HTC Vive Touchpad Y-axis).
+  
+Make sure you have a CharacterController component attached to your player character in Unity for collision detection and movement.
+
+The code above retrieves the joystick input using Input.GetAxis("Horizontal") and Input.GetAxis("Vertical"). It then constructs a movement vector using the joystick input and multiplies it by the desired speed. The transform.TransformDirection(moveDirection) ensures that the movement is relative to the player's orientation. Finally, characterController.Move(moveDirection * Time.deltaTime) applies the movement to the character controller to move the player.
+
+Feel free to adjust the speed value to control the movement speed of the player. Additionally, you can modify the code to include additional functionality such as jump or crouch based on button inputs from the VR controllers.
